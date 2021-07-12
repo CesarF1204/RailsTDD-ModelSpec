@@ -26,12 +26,17 @@ RSpec.describe User, type: :model do
       )
     end
     it "should not save if email already exists" do
-      user = User.new(
+      user1 = User.create(
         first_name: "Cesar",
         last_name: "Francisco",
         email: "princexcesar@gmail.com"
       )
-      expect(user).to be_valid
+      user2 = User.create(
+        first_name: "Pedro",
+        last_name: "Penduko",
+        email: "princexcesar@gmail.com"
+      )
+      expect(user2).to be_invalid
     end
     it "should contain a valid email" do
       user = User.new(
